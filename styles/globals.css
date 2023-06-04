@@ -1,0 +1,108 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Vazirmatn:wght@900&display=swap");
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 0, 0, 0;
+  --background-end-rgb: 0, 0, 0;
+}
+
+@layer utilities {
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  .side-button {
+    @apply flex w-[100%] items-center
+           justify-end gap-x-2 rounded-full
+           p-4 text-right
+           text-[13px] font-bold
+           duration-500;
+  }
+  .side-button:not(.side-active):hover {
+    @apply bg-white bg-opacity-5;
+  }
+  .side-button svg {
+    @apply text-xl;
+  }
+  .side-active {
+    @apply bg-primary/70;
+    box-shadow: 0 0 20px rgb(239 68 68 / 0.5);
+  }
+  .side-active:hover {
+    box-shadow: 0 0 50px rgb(239 68 68 / 0.8);
+  }
+
+  .box {
+    box-shadow: 0 0 20px #1f2229;
+    transition: 0.5s;
+  }
+  .mainbar {
+    transition: 0.5s;
+  }
+  @media screen and (max-width: 1200px) {
+    .box {
+      @apply h-[100%] w-[100%] rounded-none;
+    }
+
+    .m-button {
+      display: none;
+    }
+  }
+
+  @media screen and (max-width: 650px) {
+    .sidebar {
+      @apply fixed h-[100%];
+      transition: transform 0.5s;
+    }
+    .mainbar {
+      position: relative;
+      width: 100%;
+    }
+    .navbar-untoggled {
+      transform: translateX(907px);
+    }
+
+    .navbar-toggled {
+      @apply md:translate-x-[200px] nav-1:translate-x-[150px]
+        nav-2:translate-x-[100px] nav-3:translate-x-[50px]
+        nav-4:translate-x-[20px];
+    }
+    .main-toggled {
+      transform: translateX(-300px);
+      @apply nav-4:translate-x-[-200px];
+    }
+    .main-untoggled {
+      transform: translateX(0);
+    }
+  }
+
+  main {
+    z-index: 2;
+  }
+  .m-button {
+    @apply h-10 w-10 rounded-full 
+            border-[2px] border-primary;
+    box-shadow: 0 0 10px rgb(239 68 68);
+  }
+  .m-button * {
+    @apply relative left-[28%];
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+}
+
+@media screen and (max-width: 1470px) {
+  .grid-1 {
+    flex-direction: column;
+  }
+}
+
+* {
+  font-family: "Vazirmatn", sans-serif;
+}
